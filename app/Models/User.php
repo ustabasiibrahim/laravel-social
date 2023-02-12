@@ -13,7 +13,12 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Favoriter, SoftDeletes, HasRoles;
+    use HasApiTokens,
+        HasFactory,
+        Notifiable,
+        Favoriter,
+        SoftDeletes,
+        HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -21,9 +26,30 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'country_id',
+        'first_name',
+        'last_name',
+        'username',
         'email',
         'password',
+        'phone',
+        'email_verified_at',
+        'phone_verified_at',
+        'blocked_at',
+        'bio',
+        'display_name',
+        'gender',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<int, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'phone_verified_at' => 'datetime',
+        'blocked_at' => 'datetime',
     ];
 
     /**
@@ -34,14 +60,5 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
     ];
 }

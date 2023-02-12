@@ -3,23 +3,36 @@
 namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class UserRegisterRequest extends FormRequest
 {
+
+    public function authorize(): bool
+    {
+        return true;
+    }
+
     public function rules(): array
     {
         return [
             'country_id' => ['required', 'integer', 'exists:countries,id'],
             'first_name' => ['required', 'string', 'max:50'],
             'last_name' => ['required', 'string', 'max:50'],
+            'username' => ['required', 'string', 'max:50', 'unique:users,username', 'alpha_dash'],
             'email' => ['required', 'string', 'email', 'max:70', 'unique:users,email'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'password' => ['required', 'string', Password::min(6)->uncompromised()],
         ];
     }
 
-    public function authorize(): bool
+    public function payload()
     {
-        return true;
+        $payload = $this->validated();
+
+        $payload['password'] = Hash::make($payload['password']);
+
+        return $payload;
     }
 
     public function messages()

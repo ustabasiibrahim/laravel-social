@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PostResource;
 use App\Models\Post;
 use App\Services\PostService;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -12,8 +14,18 @@ class PostsController extends Controller
     {
     }
 
+    /**
+     * @throws AuthorizationException
+     */
     public function index()
     {
+        // check if the user has the right permission
+        $this->authorize('viewAny', Post::class);
+
+        // get all posts
+        $posts = $this->post_service->get();
+
+        return $this->respondWithSuccess(PostResource::collection($posts));
 
     }
 

@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', ['draft', 'published']);
+            $table->enum('status', ['draft', 'published'])->default('published');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('channel_id')->nullable()->constrained('channels')->nullOnDelete();
             $table->string('title');

@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
+use function array_merge;
 
 class AuthService
 {
@@ -16,6 +18,12 @@ class AuthService
 
         event(new Registered($user));
 
-        return array_merge(compact('user'), $token->toArray());
+        return UserResource::make(array_merge(compact('user'), $token->toArray()));
+    }
+
+    public function login(array $data): array
+    {
+
+
     }
 }
