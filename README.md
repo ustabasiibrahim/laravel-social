@@ -9,10 +9,10 @@ The purpose of this repository is to show good development practices on [Laravel
 - API
     - Token authentication
     - [API Resources](https://laravel.com/docs/9.x/eloquent-resources)
-    - Versioning
 - [Broadcasting](https://laravel.com/docs/9.x/broadcasting)
 - [Cache](https://laravel.com/docs/9.x/cache)
 - [Email Verification](https://laravel.com/docs/9.x/verification)
+- [Event & Listener](https://laravel.com/docs/9.x/events)
 - [Filesystem](https://laravel.com/docs/9.x/filesystem)
 - [Helpers](https://laravel.com/docs/9.x/helpers)
 - [Localization](https://laravel.com/docs/9.x/localization)
