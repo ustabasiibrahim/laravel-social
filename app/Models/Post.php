@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Overtrue\LaravelFavorite\Traits\Favoriteable;
@@ -10,7 +11,7 @@ use Spatie\Sluggable\SlugOptions;
 
 class Post extends Model
 {
-    use Favoriteable, SoftDeletes, HasSlug;
+    use Favoriteable, SoftDeletes, HasSlug, HasFactory;
 
     /**
      * The attributes that are mass assignable.

@@ -4,32 +4,10 @@ namespace App\Services;
 
 use App\Models\Post;
 
-class PostService
+class PostService extends BaseService
 {
-    public function get(array $columns = ['*']): array
+    public function __construct()
     {
-        return Post::query()->get($columns);
-    }
-
-    public function findById(int $id, array $columns = ['*']): object
-    {
-        return Post::query()->findOrFail($id, $columns);
-    }
-
-    public function findBySlug(string $slug, array $columns = ['*']): object
-    {
-        return Post::query()->where('slug', $slug)->firstOrFail($columns);
-    }
-
-    public function create(array $data): object
-    {
-        return Post::query()->create($data);
-    }
-
-    public function update(Post $post, array $data): object
-    {
-        $post->update($data);
-
-        return $post;
+        parent::__construct(new Post());
     }
 }

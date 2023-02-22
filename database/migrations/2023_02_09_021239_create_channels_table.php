@@ -9,13 +9,14 @@ return new class extends Migration {
     {
         Schema::create('channels', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('description')->nullable();
             $table->string('color')->nullable();
-            $table->string('icon')->nullable();
             $table->boolean('is_private')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

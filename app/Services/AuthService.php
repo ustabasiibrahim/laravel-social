@@ -23,7 +23,6 @@ class AuthService
 
     public function login(array $data): array
     {
-
-
+        return [];
     }
 }
