@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
-use function array_merge;
 
 class AuthService
 {

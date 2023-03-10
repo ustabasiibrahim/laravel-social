@@ -8,9 +8,9 @@ use App\Http\Resources\PostResource;
 use App\Models\Post;
 use App\Services\PostService;
 use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Http\Request;
+use function count;
 
-class PostsController extends Controller
+class PostController extends Controller
 {
     public function __construct(public PostService $post_service)
     {
@@ -22,7 +22,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = $this->post_service->get();
+       $posts = $this->post_service->getPostStatisticById([1,2,3]);
 
         return $this->success(PostResource::collection($posts));
     }
