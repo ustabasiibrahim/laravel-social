@@ -4,7 +4,7 @@ The purpose of this repository is to show good development practices on [Laravel
 
 - [Authentication](https://laravel.com/docs/9.x/authentication)
 - API
-    - Token authentication
+    - [Passport](https://laravel.com/docs/9.x/passport)
     - [API Resources](https://laravel.com/docs/9.x/eloquent-resources)
 - [Broadcasting](https://laravel.com/docs/9.x/broadcasting)
 - [Cache](https://laravel.com/docs/9.x/cache)
