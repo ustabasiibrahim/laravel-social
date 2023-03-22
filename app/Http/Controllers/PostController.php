@@ -7,8 +7,7 @@ use App\Http\Requests\Post\PostUpdateRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use App\Services\PostService;
-use Illuminate\Auth\Access\AuthorizationException;
-use function count;
+use Illuminate\Http\JsonResponse;
 
 class PostController extends Controller
 {
@@ -16,45 +15,39 @@ class PostController extends Controller
     {
     }
 
-    /**
-     * @throws AuthorizationException
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function index()
+    public function index(): JsonResponse
     {
-       $posts = $this->post_service->getPostStatisticById([1,2,3]);
+       $posts = $this->post_service->get();
 
         return $this->success(PostResource::collection($posts));
     }
 
-    public function store(PostStoreRequest $request)
+    public function store(PostStoreRequest $request): JsonResponse
     {
         $post = $this->post_service->create($request->validated());
 
         return $this->created(PostResource::make($post));
     }
 
-    public function show($id)
+    public function show($id): JsonResponse
     {
-        $post = $this->post_service->findById($id);
+        $post = $this->post_service->detail($id);
 
         return $this->success(PostResource::make($post));
     }
 
-    public function update($id, PostUpdateRequest $request)
+    public function update($id, PostUpdateRequest $request): JsonResponse
     {
         $post = $this->post_service->update($id, $request->validated());
 
         return $this->success(PostResource::make($post));
     }
 
-    public function destroy($id)
+    public function destroy($id): JsonResponse
     {
-        /** @var Post $resource */
+        /** @var Post $post */
 
-        $resource = $this->post_service->findById($id);
-
-        $resource->delete();
+        $this->post_service->delete($id);
 
         return $this->deleted();
     }

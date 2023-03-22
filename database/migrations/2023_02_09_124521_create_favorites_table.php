@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create(config('favorite.favorites_table'), function (Blueprint $table) {
+        Schema::create('favorites', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger(config('favorite.user_foreign_key'))->index()->comment('user_id');
+            $table->unsignedBigInteger('user_id')->index();
             $table->morphs('favoriteable');
             $table->timestamps();
         });
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('favorite.favorites_table'));
+        Schema::dropIfExists('favorites');
     }
 };

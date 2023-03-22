@@ -34,8 +34,6 @@ class PostResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'user' => UserResource::make($this->whenLoaded('user')),
-            'channel' => ChannelResource::make($this->whenLoaded('channel')),
             'status' => $this->status,
             'title' => $this->title,
             'slug' => $this->slug,
@@ -46,6 +44,8 @@ class PostResource extends JsonResource
             'is_pinned' => $this->is_pinned,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'user' => UserResource::make($this->whenLoaded('user')),
+            'channel' => ChannelResource::make($this->whenLoaded('channel')),
         ];
     }
 }
