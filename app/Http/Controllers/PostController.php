@@ -29,14 +29,14 @@ class PostController extends Controller
         return $this->created(PostResource::make($post));
     }
 
-    public function show($id): JsonResponse
+    public function show(int $id): JsonResponse
     {
         $post = $this->post_service->detail($id);
 
         return $this->success(PostResource::make($post));
     }
 
-    public function update($id, PostUpdateRequest $request): JsonResponse
+    public function update(int $id, PostUpdateRequest $request): JsonResponse
     {
         $post = $this->post_service->update($id, $request->validated());
 

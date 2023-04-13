@@ -32,8 +32,8 @@ class DummyDataSeeder extends Seeder
         User::factory()->count(10)->create();
 
         Channel::factory()->count(10)->create([
-            'user_id' => User::query()->inRandomOrder()->first()->id]
-        );
+            'user_id' => User::query()->inRandomOrder()->first()->id
+        ]);
 
         Post::factory()->count(10)->create([
             'user_id' => User::query()->inRandomOrder()->first()->id,

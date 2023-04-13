@@ -34,6 +34,10 @@ class PostService extends BaseService
 
         $post->update($data);
 
+        if (isset($data['image'])) {
+            $post->addMedia($data['image'])->toMediaCollection('featured');
+        }
+
         return $post;
     }
 

@@ -19,11 +19,11 @@ trait SendsApiResponse
     }
 
     /**
-     * @param array $data
+     * @param mixed $data
      * @param string $message
      * @return JsonResponse
      */
-    public function created(array $data = [], string $message = 'Created'): JsonResponse
+    public function created(mixed $data = [], string $message = 'Created'): JsonResponse
     {
         return $this->respondCreated(
             ['message' => $message] + compact('data')

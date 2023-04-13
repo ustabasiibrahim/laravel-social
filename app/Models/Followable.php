@@ -8,15 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-/**
- * @property int|string $followable_id;
- * @property int|string $followable_type;
- * @property int|string $user_id;
- *
- * @method HasMany of(Model $model)
- * @method HasMany followedBy(Model $model)
- * @method HasMany withType(string $type)
- */
 class Followable extends Model
 {
     protected $guarded = [];

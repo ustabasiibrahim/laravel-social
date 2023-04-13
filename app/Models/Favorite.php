@@ -7,11 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-/**
- * @property \Illuminate\Database\Eloquent\Model $user
- * @property \Illuminate\Database\Eloquent\Model $favoriter
- * @property \Illuminate\Database\Eloquent\Model $favoriteable
- */
+
 class Favorite extends Model
 {
     protected $guarded = [];

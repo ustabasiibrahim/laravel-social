@@ -12,7 +12,7 @@ class PostStoreRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return Auth::check();
     }
@@ -22,11 +22,11 @@ class PostStoreRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'status' => ['required', 'string', 'in:published,draft'],
-            'user_id' => ['required', 'integer', 'exists:users,id'], // 'exists:users,id
+            'user_id' => ['required', 'integer', 'exists:users,id'],
             'channel_id' => ['required', 'integer', 'exists:channels,id'],
             'title' => ['required', 'string', 'max:255'],
             'content' => ['required', 'string'],

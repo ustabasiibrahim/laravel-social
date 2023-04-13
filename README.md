@@ -1,4 +1,4 @@
-# Laravel 9 Social Media
+# Laravel 10 Social Media
 
 The purpose of this repository is to show good development practices on [Laravel](http://laravel.com/) as well as to present cases of use of the framework's features like:
 
